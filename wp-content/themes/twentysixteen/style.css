@@ -3977,3 +3977,26 @@ p > video {
 		padding: 0;
 	}
 }
+
+/* -----------------------------------------------------------------------------
+ * WEB-TEST
+ */
+
+.button-box {
+	text-align: center;
+}
+
+.button-click {
+	display: inline-block;
+	padding: 20px 30px;
+	background-color: #f00;
+	background: #f00;
+	text-align: center;
+	color: #fff;
+	transition: background 100ms ease
+}
+
+.button-click:hover {
+	background: #d00;
+	color: #fff
+}

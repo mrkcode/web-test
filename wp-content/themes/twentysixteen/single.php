@@ -11,6 +11,9 @@ get_header(); ?>
 
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
+		<div class="button-box">
+			<a href="#" class="button-click">Нажать</a>
+		</div>
 		<?php
 		// Start the loop.
 		while ( have_posts() ) : the_post();
