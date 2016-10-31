@@ -3986,7 +3986,7 @@ p > video {
 	text-align: center;
 }
 
-.button-click {
+.button-click, .button-click:visited, .button-click:link {
 	display: inline-block;
 	padding: 20px 30px;
 	background-color: #f00;
@@ -3996,7 +3996,22 @@ p > video {
 	transition: background 100ms ease
 }
 
+.button-click.success {
+	display: none;
+}
+
 .button-click:hover {
 	background: #d00;
 	color: #fff
+}
+
+#button-response.success {
+	background: green;
+	color: #fff;
+	padding: 20px 40px;
+}
+
+#button-response p {
+	margin: 0;
+	padding: 0;
 }

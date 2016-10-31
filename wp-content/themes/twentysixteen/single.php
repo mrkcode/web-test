@@ -8,11 +8,15 @@
  */
 
 get_header(); ?>
-
+<script>
+	var siteUrl = '<?php echo get_site_url(); ?>';
+	var postId  = '<?php echo get_the_id(); ?>';
+</script>
 <div id="primary" class="content-area">
 	<main id="main" class="site-main" role="main">
 		<div class="button-box">
-			<a href="#" class="button-click">Нажать</a>
+			<a href="#" class="button-click" id="button-click">Нажать</a>
+			<div id="button-response"></div>
 		</div>
 		<?php
 		// Start the loop.

@@ -197,4 +197,30 @@
 		belowEntryMetaClass( 'img.size-full' );
 		belowEntryMetaClass( 'blockquote.alignleft, blockquote.alignright' );
 	} );
+	
+	
+
+	$(function(){
+		$('#button-click').click(function(e){
+			e.preventDefault();
+			
+			var $that = $(this);
+			var $resp = $('#button-response');
+			
+			$.ajax({
+				method: 'POST',
+				url: siteUrl + '/wp-admin/admin-ajax.php?action=button_click_action',
+				data: "date=" + (new Date()) + "&postId=" + postId,
+				complete: function(xhr, status){
+					if (status = 'success') {
+						$that.addClass('success');
+						$resp.addClass('success');
+						$resp.html(xhr.responseText);
+					} else {
+						alert(status + ": " + xhr.responseText);
+					}
+				}
+			});
+		});
+	});
 } )( jQuery );

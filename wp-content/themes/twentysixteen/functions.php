@@ -419,3 +419,33 @@ function twentysixteen_widget_tag_cloud_args( $args ) {
 	return $args;
 }
 add_filter( 'widget_tag_cloud_args', 'twentysixteen_widget_tag_cloud_args' );
+
+/*
+ * WEB-TEST
+ */
+ 
+add_action('wp_ajax_nopriv_button_click_action', 'button_click');
+add_action('wp_ajax_button_click_action', 'button_click');
+
+function button_click() {
+	if(!isset($_POST['date']) || !isset($_POST['postId'])) {
+		wp_die('Invalid Request');
+	}
+	
+	$date   = $_POST['date'];
+	$postId = $_POST['postId'];
+	
+	$ip     = $_SERVER['REMOTE_ADDR'];
+	
+	$clientClicks = (array) get_post_meta($postId, 'client_clicks', true);
+	
+	$clientClicks[$ip] = $date;
+	
+	update_post_meta($postId, 'client_clicks', $clientClicks);
+	
+	echo '<p>Ip пользователя: ' . $ip . '</p>';
+	echo '<p>Время сервера: ' . date('l jS \of F Y h:i:s A') . '</p>';
+	print_r($clientClicks);
+	
+	wp_die();
+}
