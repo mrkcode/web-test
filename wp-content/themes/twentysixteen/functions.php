@@ -439,13 +439,16 @@ function button_click() {
 	
 	$clientClicks = (array) get_post_meta($postId, 'client_clicks', true);
 	
-	$clientClicks[$ip] = $date;
+	$clientClicks[] = [
+		'ip'          => $ip,
+		'client_date' => $date
+	];
 	
 	update_post_meta($postId, 'client_clicks', $clientClicks);
 	
+	echo '<h2>Регистрация успешна!</h2>';
 	echo '<p>Ip пользователя: ' . $ip . '</p>';
 	echo '<p>Время сервера: ' . date('l jS \of F Y h:i:s A') . '</p>';
-	print_r($clientClicks);
 	
 	wp_die();
 }

@@ -205,7 +205,10 @@
 			e.preventDefault();
 			
 			var $that = $(this);
-			var $resp = $('#button-response');
+			
+			if ($that.is('.success')) {
+				return;
+			}
 			
 			$.ajax({
 				method: 'POST',
@@ -214,8 +217,7 @@
 				complete: function(xhr, status){
 					if (status = 'success') {
 						$that.addClass('success');
-						$resp.addClass('success');
-						$resp.html(xhr.responseText);
+						$that.html(xhr.responseText);
 					} else {
 						alert(status + ": " + xhr.responseText);
 					}

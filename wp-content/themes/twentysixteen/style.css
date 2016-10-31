@@ -3996,22 +3996,24 @@ p > video {
 	transition: background 100ms ease
 }
 
-.button-click.success {
-	display: none;
-}
-
 .button-click:hover {
 	background: #d00;
 	color: #fff
 }
 
-#button-response.success {
+.button-click.success {
 	background: green;
 	color: #fff;
 	padding: 20px 40px;
+	text-align: left;
+	cursor: default;
 }
 
-#button-response p {
+.button-click.success:hover {
+	background: green;
+}
+
+.button-click.success p {
 	margin: 0;
 	padding: 0;
 }

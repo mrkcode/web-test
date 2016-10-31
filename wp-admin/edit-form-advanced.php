@@ -652,6 +652,32 @@ if ( post_type_supports($post_type, 'editor') ) {
  */
 do_action( 'edit_form_after_editor', $post );
 ?>
+
+<div class="client-clicks">
+<hr>
+<h2>Кнопка "Нажать"</h2>
+<hr>
+<?php
+
+	$clicks = get_post_meta($post_ID, 'client_clicks', true);
+	
+	$clicks = array_reverse($clicks);
+	
+	if ($clicks) {
+		echo "<ul>";
+	
+		foreach ($clicks as $click) {
+			echo '<li><b>IP:</b> ' . $click['ip'] . '<br><b>Client Date:</b> ' . $click['client_date'] . '<br><br></li>';
+		}
+		
+		echo "</ul>";
+	} else {
+		echo "<p>На кнопку ни разу не нажали!</p>";
+	}
+	
+?>
+</div>
+
 </div><!-- /post-body-content -->
 
 <div id="postbox-container-1" class="postbox-container">
